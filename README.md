@@ -1,109 +1,64 @@
 # 🚗 Deep Learning-Based Image Classification for Vehicles
 
-A deep learning project that classifies vehicle images into categories like cars, bikes, planes, trains, and more using a custom CNN architecture, PyTorch, and Flask for deployment.
+This project uses deep learning techniques to classify different types of vehicles (cars, bikes, buses, trucks, etc.) from images. It involves training a Convolutional Neural Network (CNN) and optionally using transfer learning models like VGG16 to improve accuracy and reduce training time.
 
-## 📂 Dataset
+## 📌 Project Objective
 
-- Source: [Kaggle - Vehicle Classification Dataset](https://www.kaggle.com)
-- Description: Labeled images across multiple vehicle classes including:
-  - Car
-  - Bike
-  - Motorcycle
-  - Plane
-  - Train
-  - Ship
-  - Auto-Rickshaw
+The goal of this project is to:
+- Classify images of vehicles into predefined categories.
+- Apply CNNs for feature extraction and classification.
+- Utilize transfer learning (VGG16) for performance comparison.
+- Visualize performance through plots and confusion matrices.
 
-## 🛠️ Project Structure
+## 🗂️ Folder Structure
 
-├── train/                  # Training dataset (organized by class)
-├── test/                   # Testing dataset (organized by class)
-├── preprocess.py           # Image preprocessing script
-├── main.py                 # Model training and evaluation script
-├── app.py                  # Flask web application for deployment
-├── trained_model.pth       # Trained model weights (handled by Git LFS)
-├── static/uploads/         # Upload folder for test images (Flask)
-├── templates/              # HTML templates for the web app
-└── requirements.txt        # Dependencies
+Deep-Learning--Based-Image-Classification-for-Vehicles/
+│
+├── train/                  # Training images (with class folders like cars, trucks, bikes, etc.)
+├── test/                   # Testing images (same structure as train)
+├── model/                  # Saved model weights and checkpoints
+├── utils/                  # Helper scripts (data preprocessing, evaluation)
+├── main.ipynb              # Jupyter Notebook for training and testing
+├── model_vgg16.h5          # Saved VGG16 transfer learning model (if used)
+├── requirements.txt        # List of required Python libraries
+└── README.md               # Project documentation
 
 
-## ⚙️ Preprocessing (`preprocess.py`)
+## 🧠 Model Overview
 
-- Resizes all images to 128x128
-- Converts images to tensors
-- Normalizes pixel values
-
-
-## 🧠 Model Training (`main.py`)
-
-- Loads and augments training/test datasets:
-  - Random flips
-  - Rotations
-  - Color jittering
-- Model architecture: Custom CNN
-- Loss function: `CrossEntropyLoss`
-- Optimizer: `Adam`
-- Final test accuracy: ~61%
+- Custom CNN: Built using TensorFlow and Keras for end-to-end image classification.
+- Transfer Learning: Option to use `VGG16` pre-trained on ImageNet for improved results on small datasets.
+- Input shape: Images are resized (e.g., 224x224x3) before being passed to the model.
+- Output: Softmax layer for multi-class classification.
 
 
+## 🔧 Installation & Setup
 
-## 🌐 Web Deployment (`app.py`)
-
-Built with Flask to classify uploaded images:
-
-1. User uploads an image via web UI
-2. Image is preprocessed
-3. Trained model predicts vehicle class
-4. Output displayed in the browser
-
-Run it locally:
-
-```bash
-python app.py
-```
-Visit: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
-## 🚀 Future Work
-
-- Improve accuracy using:
-  - Larger dataset
-  - Transfer learning (e.g., ResNet, VGG)
-- Deploy on cloud platforms like **AWS**, **Azure**, or **Heroku**
-- Add image explainability (e.g., Grad-CAM)
-
-
-
-## 📦 Installation
-
-1. Clone the repo:
+1. Clone the Repository
    ```bash
    git clone https://github.com/TanishaAnil/Deep-Learning--Based-Image-Classification-for-Vehicles.git
    cd Deep-Learning--Based-Image-Classification-for-Vehicles
    ```
 
-2. Install dependencies:
+2. Install Requirements
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the Flask app:
-   ```bash
-   python app.py
-   ```
+3. Run the Notebook
+   - Open `main.ipynb` in Jupyter Notebook or VS Code.
+   - Train the model and evaluate performance.
+
+## 📈 Results
+
+- Achieved ~75% accuracy 
+- Performance plots included (accuracy vs. loss)
+- Confusion matrix for evaluation
 
 
 
-## 🧠 Tech Stack
+## 🚀 Future Improvements
 
-- Python 3.x
-- PyTorch
-- Flask
-- torchvision
-- PIL (Pillow)
-
-
-
-## 🏁 Results
-
-- Achieved ~61% classification accuracy
-- Successfully deployed model via local web app
+- Add webcam-based real-time vehicle classification
+- Deploy using Flask or Streamlit web app
+- Dataset augmentation and model optimization
